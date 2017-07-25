@@ -47,6 +47,15 @@ public class Word
    public String scramble(String word)
    {
         //TODO scramble the letters following the pseudocode
+         int length = word.length();
+        for(int h=0; h<length;h++)
+        {
+        int i = generator.nextInt(length-1);
+        int j = generator.nextInt(length-i-1) + i + 1;
+        word = word.substring(0,i) + word.substring(j, j + 1) + 
+        word.substring(i+1,j) + word.substring(i, i + 1) + word.substring(j+1,length);
+        }
+        return word;
    }
 
 
