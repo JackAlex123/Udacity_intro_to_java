@@ -24,6 +24,11 @@ public class Word
 {
 
     //TODO write the constructor and define the instance variable
+    String word;
+    public Word(String word){
+        this.word = word;
+        
+    }
 
     /**
      * Gets all the substrings of this Word.
@@ -32,6 +37,17 @@ public class Word
     public String getSubstrings()
     {
        //TODO implement this method
+       String subStrings="" ;
+       for(int j = 1 ; j<word.length()+1; j++)
+       {
+           for(int i = 0 ; i+j<word.length()+1; i++)
+           {
+               subStrings = subStrings + word.substring(i, i+j) + "\n";
+           }
+      
+       }
+       return subStrings;
+       
     }
 }
 
