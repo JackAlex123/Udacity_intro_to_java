@@ -1,0 +1,88 @@
+//Create a Polygon class. A polygon is a closed shape with lines joining the corner points.
+//You will keep the points in an array list. Use object of java.awt.Point for the point.
+
+//Polygon will have as an instance variable an ArrayList of Points to hold the points
+//The constructor takes no parameters but initializes the instance variable.  The
+//Polygon class also has the following methods:
+//    add: adds a Point to the polygon
+//    perimeter: returns the perimeter of the polygon
+//    draw: draws the polygon by connecting consecutive points and then
+//          connecting the last point to the first.
+//
+//No methods headers or javadoc is provided this time. You get to try your hand at writing
+//a class almost from scratch
+
+// Need help starting this question? In the lesson titled 
+// "Starting points: Problem Set Questions", go to the
+// problem titled "Problem Set 6 - Question 3" for some tips on 
+// how to begin.
+
+import java.util.ArrayList;
+import java.awt.Point;
+
+public class Polygon
+{
+    // TODO: provide the required constructor, instance variable, and methods
+    ArrayList<Point> points; // instance variable
+    
+    public Polygon()//constructor
+    {
+       points = new  ArrayList<Point>();// initializes the instance variable
+    }
+    
+    public void add(Point pointname)
+    {
+        points.add(pointname); // add a new point
+    }
+    
+    public double perimeter()
+    {
+        double perimeter = 0.0;
+        //To calculate the perimeter
+        for (int i = 0; i < points.size(); i++)
+        {
+            if(i>0)
+            {
+                double x0 = points.get(i).getX();
+                double y0 = points.get(i).getY();
+            
+                double x1 = points.get(i-1).getX();
+                double y1 = points.get(i-1).getY();
+            
+                perimeter = perimeter + Math.sqrt((x1-x0)*(x1-x0) + (y1-y0)*(y1-y0));
+            }
+            else
+            {
+                double x0 = points.get(i).getX();
+                double y0 = points.get(i).getY();
+            
+                double x1 = points.get(points.size()-1).getX();
+                double y1 = points.get(points.size()-1).getY();
+            
+                perimeter = perimeter + Math.sqrt((x1-x0)*(x1-x0) + (y1-y0)*(y1-y0)); 
+            }
+           
+            
+        }
+        return perimeter;
+    }
+    
+    public void draw()
+    {
+       Point first, second;
+
+        for(int i = 0; i < points.size() - 1; i++)
+        {
+            first = points.get(i);
+            second = points.get(i+1);
+
+            Line line = new Line(first.getX(), first.getY(), second.getX(), second.getY());
+            line.draw();
+        }
+
+        first = points.get(0);
+        second = points.get(points.size() - 1);
+        Line line = new Line(first.getX(), first.getY(), second.getX(), second.getY());
+        line.draw();
+    }
+}
