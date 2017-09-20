@@ -1,1 +1,1 @@
-# Udacity_intro_to_java
+# Udacity_intro_to_java_CS046
